@@ -1,8 +1,22 @@
 {
   "source": "https://stairfit.co.uk/",
-  "generated_at": "2025-10-23T18:22:07.882143Z",
+  "generated_at": "2025-10-23T21:13:58.501503Z",
   "data": {
-    "summary": "StairFit.co.uk | Under Stairs Storage Specialists | Free Estimate Areas We Cover StairFit\u00c2\u00ae Book Survey Home About Processes Contact FAQ Get a Price Areas We Cover StairFit\u00c2\u00ae Book Survey Home About Processes Contact FAQ Get a Price StairFit\u00c2\u00ae StairFit\u00c2\u00ae Stair...",
-    "topics": []
+    "summary": "StairFit specializes in bespoke under stairs storage solutions, offering customizable designs, high-quality materials, and a free online estimator for transparent pricing. Their efficient installation process enhances home storage without compromising space.",
+    "brand": "StairFit",
+    "services": [
+      "Bespoke under stairs storage solutions",
+      "Free online estimates",
+      "Customizable storage design",
+      "Quick and clean installations"
+    ],
+    "location": "Midlands, UK",
+    "topics": [
+      "Under stairs storage",
+      "Home organization",
+      "Custom storage solutions",
+      "Functional design"
+    ],
+    "aio_score": 85
   }
 }

@@ -1,16 +1,16 @@
 {
   "source": "http://www.elide.org/about",
-  "generated_at": "2025-10-24T13:20:58.079383Z",
+  "generated_at": "2025-10-24T13:25:43.601166Z",
   "data": {
-    "summary": "This page provides information about Kate, including social media handles and an FAQ section addressing common inquiries.",
+    "summary": "Kate's personal webpage provides information about her, including social media links and an FAQ section.",
     "brand": "Kate",
     "services": [],
     "location": "",
     "topics": [
-      "About",
-      "Contact",
+      "personal",
+      "social media",
       "FAQ"
     ],
-    "aio_score": 70
+    "aio_score": 65
   }
 }

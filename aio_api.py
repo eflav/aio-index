@@ -7,13 +7,16 @@ import uvicorn
 import os
 
 # -------------------------------------------------------------------
-# 🚀 Initialize FastAPI app with CORS enabled
+# 🚀 Initialize FastAPI app with secure CORS (Framer + API domains)
 # -------------------------------------------------------------------
 app = FastAPI(title="AIO Flow API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Later: replace "*" with your Framer domain for security
+    allow_origins=[
+        "https://numerical-psychology-661091.framer.app",  # Your Framer site
+        "https://aioflow-api.onrender.com",               # Your API domain
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -21,7 +24,7 @@ app.add_middleware(
 
 
 # -------------------------------------------------------------------
-# 🏠 Root endpoint (for easy testing)
+# 🏠 Root endpoint (for easy browser test)
 # -------------------------------------------------------------------
 @app.get("/")
 def home():
@@ -80,7 +83,7 @@ async def analyze(request: Request, url: str = Query(None)):
         update_index(url, filename, summary.get("aio_score", 0))
 
         # -------------------------------------------------------------------
-        # ✅ Return response
+        # ✅ Return response to frontend
         # -------------------------------------------------------------------
         return JSONResponse(
             {
@@ -97,7 +100,7 @@ async def analyze(request: Request, url: str = Query(None)):
 
 
 # -------------------------------------------------------------------
-# 🧩 Local entry point (not used by Render)
+# 🧩 Local entry point (used if running directly)
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))

@@ -77,7 +77,11 @@ def get_existing_sha(path: str):
 
 
 def upload_json(path: str, data: dict):
-    """Upload or update JSON file to GitHub repo."""
+    """Upload or update JSON file to GitHub repo under /data/ folder."""
+    # Ensure path includes data/ prefix
+    if not path.startswith("data/"):
+        path = f"data/{path}"
+
     content = json.dumps(data, indent=2)
     b64 = base64.b64encode(content.encode()).decode()
     existing_sha = get_existing_sha(path)
@@ -91,6 +95,7 @@ def upload_json(path: str, data: dict):
     r = requests.put(f"{API_BASE}/{path}", headers=HEADERS, json=payload)
     if r.status_code not in (200, 201):
         raise RuntimeError(f"GitHub upload failed: {r.status_code} - {r.text}")
+    print(f"✅ Uploaded {path} successfully.")
 
 
 def sanitize_filename(url: str) -> str:
@@ -106,7 +111,7 @@ def update_index(source_url, filename, aio_score):
     index_path = "index.json"
     entry = {
         "source": source_url,
-        "json": filename,
+        "json": f"data/{filename}",  # reference new data folder
         "aio_score": aio_score,
         "last_updated": datetime.utcnow().isoformat() + "Z"
     }
@@ -143,13 +148,13 @@ def main():
     }
 
     filename = sanitize_filename(url)
-    print("⬆️  Uploading JSON to GitHub...")
+    print("⬆️  Uploading JSON to GitHub (data folder)...")
     upload_json(filename, payload)
 
     # Update index.json
     update_index(url, filename, summary.get("aio_score", 0))
 
-    public_url = f"https://{GITHUB_USERNAME}.github.io/{GITHUB_REPO.split('/')[-1]}/{filename}"
+    public_url = f"https://{GITHUB_USERNAME}.github.io/{GITHUB_REPO.split('/')[-1]}/data/{filename}"
     index_url = f"https://{GITHUB_USERNAME}.github.io/{GITHUB_REPO.split('/')[-1]}/index.json"
     print(f"\n✅ Hosted JSON:\n{public_url}")
     print(f"📇 Live Index:\n{index_url}")

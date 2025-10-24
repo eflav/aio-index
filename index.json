@@ -17,16 +17,3 @@
     "aio_score": 70,
     "last_updated": "2025-10-24T13:17:16.619121Z"
   },
-  {
-    "source": "http://www.elide.org/about",
-    "json": "www.elide.org_about.json",
-    "aio_score": 65,
-    "last_updated": "2025-10-24T13:25:44.604404Z"
-  },
-  {
-    "source": "http://www.elide.org",
-    "json": "www.elide.org.json",
-    "aio_score": 65,
-    "last_updated": "2025-10-24T13:25:51.507238Z"
-  }
-]
